@@ -1,0 +1,31 @@
+linux 指令
+安装rpm ：rpm -ivh jjj.rpm
+查看线程：ps -ef | grep java
+清除线程： kill
+查看端口：netstat -an | grep 80
+启动nginx：sbin/nginx -c conf/nginx.conf
+重启nginx: sbin/nginx -s reload
+查看文件细节：tail -f xxx 
+查看占用率：top -H
+启动redis：src/redis-server ./redis.conf
+redis-cli -p 6379 -a 5566719
+
+
+程序启动操作指南：
+1. 在阿里云启动三个服务器
+2. 修改本地host文件，对于myshop域名的解析
+3. xshell里面连接三个服务器。
+4. 启动nginx  cd /usr/local/openresty/nginx   sbin/nginx -c conf/nginx.conf
+启动 java  cd /www/myshop    ./deploy.sh &
+
+
+rocketmq
+cd /usr/local/zhangcz/rocket 
+启动：nohup sh bin/mqnamesrv &   tail -f ~/logs/rocketmqlogs/namesrv.log
+nohup sh bin/mqbroker -n localhost:9876 -c conf/broker.conf autoCreateTopicEnable=true &
+ tail -f ~/logs/rocketmqlogs/broker.log
+关闭：sh bin/mqshutdown broker  sh bin/mqshutdown namesrv
+
+./mqadmin updateTopic -n localhost:9876 -t stock -c DefaultCluster
+
+可能需要修改tool.sh 里面的一个端口

@@ -1,0 +1,44 @@
+
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+  datasource:
+    name: shop
+    username: root
+    password: 5566719
+    #?serverTimezone=UTC解决时区的报错 这里需要指定自己连接的数据库
+    url: jdbc:mysql://localhost:3306/shop?serverTimezone=GMT%2B8
+    # 默认数据源是hikari， 连接实现是jdbc
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 修改数据源为druid
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  #配置springboot对redis的依赖
+  redis:
+    host: 8.140.103.103
+    port: 6379
+    database: 10
+    # 设置jedis连接池
+    jedis:
+      pool:
+        max-active: 50
+        min-idle: 20
+    password: 5566719
+
+# 数据库的映射
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+mq:
+  nameserver:
+    addr: 123.56.52.77:9876
+
+  topicname: stock
+
+
+
+
